@@ -32,6 +32,7 @@ app.post('/', function(req, res) {
   for (var j in req.query) {
     paramsURL.push({'name': j, 'value': req.query[j]})
   }
+  // Data from form body
   var paramsBody = [];
   for (var i in req.body) {
     paramsBody.push({'name': i, 'value': req.body[i]})
@@ -40,6 +41,7 @@ app.post('/', function(req, res) {
   context.dataURL = paramsURL;
   context.dataBody = paramsBody;
   context.type = 'POST';
+  // Allows home page to show additional body data for POST requests
   context.post = true;
   res.render('home', context);
 });
