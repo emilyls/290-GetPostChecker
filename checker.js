@@ -23,6 +23,9 @@ app.get('/', function(req, res) {
   var context = {};
   context.dataURL = paramsURL;
   context.type = 'GET';
+  if (paramsURL.length != 0) {
+    context.URL = true;
+  }
   res.render('home', context);
 });
 
@@ -42,7 +45,12 @@ app.post('/', function(req, res) {
   context.dataBody = paramsBody;
   context.type = 'POST';
   // Allows home page to show additional body data for POST requests
-  context.post = true;
+  if (paramsURL.length != 0) {
+    context.URL = true;
+  }
+  if (paramsBody != 0) {
+    context.Body = true; 
+  }
   res.render('home', context);
 });
 
